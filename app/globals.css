@@ -1,0 +1,121 @@
+@import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@300;400;500;600;700;800&family=Barlow:wght@300;400;500&family=JetBrains+Mono:wght@300;400&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ============================================================
+   VYTALL — Global Styles (Light Theme)
+   ============================================================ */
+
+:root {
+  --font-display: 'Barlow Condensed', sans-serif;
+  --font-body: 'Barlow', sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+
+  /* Light palette */
+  --void: #f5f2ee;
+  --obsidian: #ece9e3;
+  --graphite: #e4e0d8;
+  --slate: #d8d4cc;
+  --border: #cac6bc;
+  --muted: #b0aca2;
+  --ghost: #888078;
+  --ash: #4a4640;
+  --bone: #1a1714;
+  --white: #0e0c0a;
+  --vital: #3a6647;
+  --vital-dim: #d0e4d8;
+  --vital-bright: #2d5238;
+  --signal: #b83228;
+
+  --nav-height: 64px;
+  --bottom-nav: 72px;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+html {
+  font-size: 16px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  background-color: var(--void);
+  color: var(--bone);
+  font-family: var(--font-body);
+  min-height: 100dvh;
+  overflow-x: hidden;
+}
+
+::-webkit-scrollbar { width: 4px; height: 4px; }
+::-webkit-scrollbar-track { background: var(--obsidian); }
+::-webkit-scrollbar-thumb { background: var(--border); border-radius: 2px; }
+
+::selection { background: var(--vital-dim); color: var(--bone); }
+
+.sys-label {
+  font-family: var(--font-mono);
+  font-size: 0.625rem;
+  font-weight: 400;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--ghost);
+}
+
+.card { background: var(--graphite); border: 1px solid var(--border); border-radius: 12px; }
+.card-hover { transition: border-color 0.2s ease, background 0.2s ease; }
+.card-hover:hover { border-color: var(--muted); background: var(--slate); }
+.score-bar { height: 2px; background: var(--border); border-radius: 1px; overflow: hidden; }
+.score-bar-fill { height: 100%; background: var(--vital); border-radius: 1px; transition: width 0.8s cubic-bezier(0.16, 1, 0.3, 1); }
+.divider { height: 1px; background: var(--border); width: 100%; }
+
+.btn-primary {
+  display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+  background: var(--vital); color: #f5f2ee;
+  font-family: var(--font-display); font-weight: 700;
+  font-size: 0.875rem; letter-spacing: 0.08em; text-transform: uppercase;
+  padding: 12px 24px; border-radius: 8px; border: none;
+  cursor: pointer; transition: background 0.2s ease, transform 0.1s ease;
+  text-decoration: none;
+}
+.btn-primary:hover { background: var(--vital-bright); }
+.btn-primary:active { transform: scale(0.98); }
+
+.btn-ghost {
+  display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+  background: transparent; color: var(--ash);
+  font-family: var(--font-display); font-weight: 500;
+  font-size: 0.875rem; letter-spacing: 0.06em; text-transform: uppercase;
+  padding: 11px 24px; border-radius: 8px;
+  border: 1px solid var(--border); cursor: pointer;
+  transition: all 0.2s ease; text-decoration: none;
+}
+.btn-ghost:hover { border-color: var(--muted); color: var(--bone); }
+
+.input-field {
+  width: 100%;
+  background: var(--void);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  color: var(--bone);
+  font-family: var(--font-body);
+  font-size: 0.9375rem;
+  padding: 12px 14px;
+  outline: none;
+  transition: border-color 0.2s ease;
+}
+.input-field:focus { border-color: var(--vital); }
+.input-field::placeholder { color: var(--ghost); }
+select.input-field { cursor: pointer; }
+
+@keyframes fadeUp { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes glowBreathe { 0%,100% { opacity: 0.5; transform: scale(1); } 50% { opacity: 0.9; transform: scale(1.05); } }
+@keyframes pulse-dot { 0%,100%{opacity:1} 50%{opacity:.3} }
+@keyframes float { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-10px)} }
+@keyframes rotate { from{transform:rotate(0deg)} to{transform:rotate(360deg)} }
+@keyframes rotateRev { from{transform:rotate(0deg)} to{transform:rotate(-360deg)} }
+@keyframes scanline { 0%{transform:translateY(-100%);opacity:0} 10%{opacity:.6} 90%{opacity:.6} 100%{transform:translateY(800px);opacity:0} }
+@keyframes ticker { from{transform:translateX(0)} to{transform:translateX(-50%)} }
+@keyframes barGrow { from{width:0} to{width:var(--w)} }
