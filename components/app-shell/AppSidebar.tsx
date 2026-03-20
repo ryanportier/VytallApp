@@ -1,7 +1,7 @@
 "use client";
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
-import { createClient } from "@/lib/supabase/client";
+import { logOut } from "@/lib/firebase/auth";
 import {
   LayoutDashboard,
   CheckSquare,
@@ -30,8 +30,7 @@ export default function AppSidebar({ profileName, profileInitial }: Props) {
   const router = useRouter();
 
   async function handleLogout() {
-    const supabase = createClient();
-    await supabase.auth.signOut();
+    await logOut();
     router.push("/");
     router.refresh();
   }

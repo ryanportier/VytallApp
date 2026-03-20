@@ -1,10 +1,10 @@
 import type { Metadata, Viewport } from "next";
 import "./globals.css";
+import { FirebaseAuthProvider } from "@/components/providers/FirebaseAuthProvider";
 
 export const metadata: Metadata = {
   title: "VYTALL",
-  description:
-    "A memory-driven AI vitality system that studies your patterns, interprets your daily state, and helps you train against the strongest version of yourself.",
+  description: "A memory-driven AI vitality system that studies your patterns, interprets your daily state, and helps you train against the strongest version of yourself.",
   keywords: ["vitality", "fitness", "AI training", "workout tracker"],
   authors: [{ name: "VYTALL" }],
   openGraph: {
@@ -21,14 +21,14 @@ export const viewport: Viewport = {
   themeColor: "#f5f2ee",
 };
 
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body>{children}</body>
+      <body>
+        <FirebaseAuthProvider>
+          {children}
+        </FirebaseAuthProvider>
+      </body>
     </html>
   );
 }
