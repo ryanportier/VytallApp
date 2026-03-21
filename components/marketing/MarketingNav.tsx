@@ -41,7 +41,7 @@ export default function MarketingNav() {
       <nav className="vn">
         <Link href="/" className="vn-logo">VYTALL</Link>
         <div className="vn-links">
-          {[{l:"Modules",h:"/#modules"},{l:"Pricing",h:"/pricing"},{l:"About",h:"/about"}].map(i=>(
+          {[{l:"Modules",h:"/#modules"},{l:"Pricing",h:"/pricing"},{l:"About",h:"/about"},{l:"Docs",h:"/docs"}].map(i=>(
             <Link key={i.h} href={i.h} className="vn-link">{i.l}</Link>
           ))}
         </div>
