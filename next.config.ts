@@ -6,6 +6,17 @@ const nextConfig: NextConfig = {
       { protocol: "https", hostname: "*.supabase.co" },
     ],
   },
+  async headers() {
+    return [
+      {
+        source: "/(.*)",
+        headers: [
+          // Allow Google OAuth popup to post messages back to parent window
+          { key: "Cross-Origin-Opener-Policy", value: "unsafe-none" },
+        ],
+      },
+    ];
+  },
 };
 
 export default nextConfig;
