@@ -182,7 +182,7 @@ export default function MarketingFooter() {
             </p>
             <div className="f-socials">
               <a
-                href="https://x.com/vytall_app"
+                href="https://x.com/"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="f-social-btn"
@@ -192,7 +192,7 @@ export default function MarketingFooter() {
                 <XLogo size={14} />
               </a>
               <a
-                href="https://x.com/vytall_app"
+                href="https://x.com/"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="f-social-btn"
@@ -226,14 +226,14 @@ export default function MarketingFooter() {
             <Link href="/pricing" className="f-bottom-link">Privacy</Link>
             <Link href="/pricing" className="f-bottom-link">Terms</Link>
             <a
-              href="https://x.com/vytall_app"
+              href="https://x.com/"
               target="_blank"
               rel="noopener noreferrer"
               className="f-bottom-link"
               style={{ display: "flex", alignItems: "center", gap: "5px" }}
             >
               <XLogo size={10} />
-              @vytall_app
+              
             </a>
             <span className="f-version">v0.1.0 — MVP</span>
           </div>

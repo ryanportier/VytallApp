@@ -41,14 +41,15 @@ export default function LoginPage() {
   async function handleGoogle() {
     setError(""); setGoogleLoading(true);
     try {
-      const { user, isNew } = await signInWithGoogle();
-      const token = await user.getIdToken();
+      const result = await signInWithGoogle();
+      if (!result) return; // production: redirect happening, page will reload
+      const token = await result.user.getIdToken();
       setTokenCookie(token);
-      if (isNew) {
+      if (result.isNew) {
         await fetch("/api/auth/create-profile", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ uid: user.uid, email: user.email }),
+          body: JSON.stringify({ uid: result.user.uid, email: result.user.email }),
         });
         router.push("/app/onboarding");
       } else {

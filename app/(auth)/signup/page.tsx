@@ -46,15 +46,16 @@ export default function SignupPage() {
   async function handleGoogle() {
     setError(""); setGoogleLoading(true);
     try {
-      const { user, isNew } = await signInWithGoogle();
-      const token = await user.getIdToken();
+      const result = await signInWithGoogle();
+      if (!result) return; // production: redirect happening
+      const token = await result.user.getIdToken();
       document.cookie = `firebase-token=${token}; path=/; max-age=3600; SameSite=Lax`;
       await fetch("/api/auth/create-profile", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ uid: user.uid, email: user.email }),
+        body: JSON.stringify({ uid: result.user.uid, email: result.user.email }),
       });
-      router.push(isNew ? "/app/onboarding" : "/app");
+      router.push(result.isNew ? "/app/onboarding" : "/app");
     } catch (err: unknown) {
       const msg = err instanceof Error ? err.message : "";
       if (!msg.includes("popup-closed")) {

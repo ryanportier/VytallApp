@@ -219,7 +219,7 @@ export default function PaymentsClient({ currentPlan, x402History }: Props) {
                 <span className="pay-price-per">/ month</span>
               </div>
               <div style={{ fontFamily:"'JetBrains Mono',monospace", fontSize:".5rem", color:"var(--ghost)", textTransform:"uppercase", letterSpacing:".08em" }}>
-                Direct USDC transfer · Base network
+                USDC Payments · Base network
               </div>
             </div>
             {isPremium && (
@@ -278,8 +278,7 @@ export default function PaymentsClient({ currentPlan, x402History }: Props) {
         <div className="pay-info">
           <ExternalLink size={15} color="var(--ghost)" style={{ flexShrink:0, marginTop:"1px" }} />
           <div style={{ fontFamily:"'Barlow',sans-serif", fontSize:".82rem", color:"var(--ghost)", lineHeight:1.6 }}>
-            Direct USDC transfer on Base. Your wallet signs a standard ERC-20 transfer — no protocol overhead.
-            Need USDC? <a href="https://faucet.circle.com" target="_blank" rel="noopener noreferrer" style={{ color:"var(--vital)", textDecoration:"none" }}>faucet.circle.com</a> for testnet.
+           Payments whit USDC
           </div>
         </div>
 

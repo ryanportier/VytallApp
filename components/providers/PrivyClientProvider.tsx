@@ -18,7 +18,7 @@ export default function PrivyClientProvider({
         appearance: {
           theme: "light",
           accentColor: "#3a6647",
-          logo: "/icons/logo.png",
+          logo: undefined,
           landingHeader: "Connect your wallet",
           loginMessage: "Connect to make payments in USDC",
         },

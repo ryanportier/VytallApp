@@ -2,6 +2,8 @@ import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
   signInWithPopup,
+  signInWithRedirect,
+  getRedirectResult,
   GoogleAuthProvider,
   signOut,
   onAuthStateChanged,
@@ -22,8 +24,25 @@ export async function signIn(email: string, password: string) {
 }
 
 export async function signInWithGoogle() {
-  const cred = await signInWithPopup(auth, googleProvider);
-  return { user: cred.user, isNew: cred.user.metadata.creationTime === cred.user.metadata.lastSignInTime };
+  // Use popup on localhost, redirect on production (more reliable)
+  const isLocal = window.location.hostname === "localhost";
+  if (isLocal) {
+    const cred = await signInWithPopup(auth, googleProvider);
+    return { user: cred.user, isNew: cred.user.metadata.creationTime === cred.user.metadata.lastSignInTime };
+  } else {
+    await signInWithRedirect(auth, googleProvider);
+    // Will redirect — result handled in getGoogleRedirectResult
+    return null;
+  }
+}
+
+export async function getGoogleRedirectResult() {
+  const result = await getRedirectResult(auth);
+  if (!result) return null;
+  return {
+    user: result.user,
+    isNew: result.user.metadata.creationTime === result.user.metadata.lastSignInTime,
+  };
 }
 
 export async function logOut() {
